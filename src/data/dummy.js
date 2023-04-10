@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   AiOutlineCalendar,
   AiOutlineShoppingCart,
@@ -152,24 +152,42 @@ const customerGridImage = (props) => (
   </div>
 );
 
-const customerGridStatus = (props) => (
-  <div className="flex gap-2 justify-center items-center text-gray-700 capitalize">
-    <p
-      style={{
-        background:
-          props.status === "activo"
-            ? "#8BE78B"
-            : props.status === "pendiente"
-            ? "#FEC90F"
-            : props.status === "cancelado"
-            ? "#C61A09"
-            : "",
-      }}
-      className="rounded-full h-3 w-3"
-    />
-    <p>{props.status}</p>
-  </div>
-);
+const customerGridStatus = (props) => {
+  const [status, setStatus] = useState();
+
+  const currentDate = new Date().toISOString().split("T")[0];
+  const endDate = props.endDate;
+  const fiveDaysLater = new Date(new Date().getTime() + (5 * 24 * 60 * 60 * 1000)).toISOString().split("T")[0];
+
+  useEffect(() => {
+    if (currentDate > endDate) {
+      setStatus("vencido");
+    } else if (fiveDaysLater > endDate) {
+      setStatus("vence pronto")
+    } else {
+      setStatus("activo");
+    }
+  }, []);
+
+  return (
+    <div className="flex gap-2 items-center text-gray-700 capitalize">
+      <p
+        style={{
+          background:
+            status === "activo"
+              ? "#8BE78B"
+              : status === "vence pronto"
+              ? "#FEC90F"
+              : status === "vencido"
+              ? "#C61A09"
+              : "",
+        }}
+        className="rounded-full h-3 w-3"
+      />
+      <p>{status}</p>
+    </div>
+  );
+};
 const customerGridPayment = (props) => (
   <div className="flex gap-2 justify-center items-center text-gray-700 capitalize">
     {props.payment && <p>$ {props.payment}</p>}
@@ -183,11 +201,7 @@ const customerButtonProfile = (props) => {
       <button>
         <span
           className="material-symbols-outlined"
-          onClick={() =>
-            navigate(
-              `/editar-cliente/${props.id}`
-            )
-          }
+          onClick={() => navigate(`/editar-cliente/${props.id}`)}
         >
           manage_accounts
         </span>
@@ -450,46 +464,44 @@ export const customersGrid = [
     headerText: "Nombre",
     width: "160",
     template: customerGridImage,
-    textAlign: "Center",
+    textAlign: "left",
   },
 
-  { field: "dni", headerText: "DNI", width: "110", textAlign: "Center" },
+  { field: "dni", headerText: "DNI", width: "110", textAlign: "left" },
 
   {
-    field: "status",
     headerText: "Status",
-    width: "120",
-    format: "yMd",
-    textAlign: "Center",
+    width: "140",
     template: customerGridStatus,
+    textAlign: "Center",
   },
 
-  { field: "plan", headerText: "Plan", width: "100", textAlign: "Center" },
+  { field: "plan", headerText: "Plan", width: "80", textAlign: "left" },
 
   {
     field: "payment",
     headerText: "Pago",
     width: "100",
-    textAlign: "Center",
+    textAlign: "right",
     template: customerGridPayment,
     // isPrimaryKey: true,
   },
 
   {
     field: "startDate",
-    headerText: "Fecha de inicio",
-    width: "135",
+    headerText: "Inicio",
+    width: "130",
     format: "C2",
-    textAlign: "Center",
+    textAlign: "left",
   },
   {
     field: "endDate",
-    headerText: "Fecha de finalización",
-    width: "170",
+    headerText: "Vencimiento",
+    width: "130",
     format: "yMd",
-    textAlign: "Center",
+    textAlign: "left",
   },
-  { field: "routine", headerText: "Rutina", width: "100", textAlign: "Center" },
+  { field: "routine", headerText: "Rutina", width: "100", textAlign: "center" },
   {
     field: "profile",
     headerText: "Perfil",
@@ -543,15 +555,15 @@ export const employeesGrid = [
 ];
 
 export const links = [
-  // {
-  //   title: "Dashboard",
-  //   links: [
-  //     {
-  //       name: "home",
-  //       icon: <FiShoppingBag />,
-  //     },
-  //   ],
-  // },
+  {
+    title: "Dashboard",
+    links: [
+      {
+        name: "home",
+        icon: <FiShoppingBag />,
+      },
+    ],
+  },
 
   {
     title: "Secciones",

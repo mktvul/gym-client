@@ -36,8 +36,6 @@ export const ContextProvider = ({ children }) => {
 
     const data = await response.json();
 
-    console.log(data);
-
     setResults(data);
   };
 

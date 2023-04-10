@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+
+import DatePicker from "react-datepicker";
+import parseISO from "date-fns/parseISO";
 
 import { Button } from "../components";
 import { useStateContext } from "../contexts/ContextProvider";
@@ -7,10 +10,21 @@ import { useStateContext } from "../contexts/ContextProvider";
 const EditCustomer = () => {
   const [customer, setCustomer] = useState({});
   const [formSubmit, setFormSubmit] = useState(false);
+  const [postData, setPostData] = useState({
+    name: "",
+    email: "",
+    dni: "",
+    plan: "",
+    routine: "",
+  });
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState();
 
   const params = useParams();
 
-  const { currentColor, getResults, results } = useStateContext();
+  const navigate = useNavigate();
+
+  const { fetchData, currentColor, getResults, results } = useStateContext();
 
   useEffect(() => {
     getResults();
@@ -18,19 +32,16 @@ const EditCustomer = () => {
     results.resultado?.map((result) =>
       result.id == params.id ? setCustomer(result) : null
     );
-    console.log(customer);
   }, []);
 
   const handleSubmit = () => {
     setFormSubmit(true);
   };
 
-  console.log();
-
   return (
     <div className="mt-24">
       <div className="flex flex-wrap lg:flex-nowrap justify-center ">
-        <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg h-500 rounded-xl w-full lg:w-[1024px] p-8 pt-9 m-3 bg-hero-pattern bg-no-repeat bg-cover bg-center flex flex-col items-center">
+        <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg h-[550px] rounded-xl w-full lg:w-[1024px] p-8 pt-9 m-3 bg-hero-pattern bg-no-repeat bg-cover bg-center flex flex-col items-center">
           <div className="flex justify-between items-center">
             <div
               className={
@@ -50,8 +61,8 @@ const EditCustomer = () => {
               <form
                 action={`https://gym-proficient-server-production.up.railway.app/users/update/${params.id}`}
                 method="post"
+                className="w-[650px] h-[400px] flex flex-col"
                 onSubmit={handleSubmit}
-                className="w-[650px] flex flex-col"
               >
                 <div>
                   <input
@@ -92,7 +103,26 @@ const EditCustomer = () => {
                     required
                     className="bg-[#fbfbfb] border-[#e5e7eb] border-solid border-[1px] rounded-[8px] w-[300px] h-[45px] outline-none p-[5px] m-[5px]"
                   />
-                  <div className="flex flex-col w-[300px] mt-[5px] ml-[10px]">
+                  <div className="flex items-center border-transparent border-solid border-[1px] rounded-[8px] w-[300px] h-[45px] outline-none p-[5px] m-[5px]">
+                    <label htmlFor="gender" className="text-gray-400">
+                      Género:
+                    </label>
+                    <select
+                      name="gender"
+                      id="gender"
+                      onChange={(e) =>
+                        setCustomer({ ...customer, gender: e.target.value })
+                      }
+                      className="cursor-pointer outline-none"
+                    >
+                      <option value={customer.gender}>{customer.gender}</option>
+                      <option value="2ps">Femenino</option>
+                      <option value="3ps">Masculino</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="flex">
+                  <div className="flex items-center border-transparent border-solid border-[1px] rounded-[8px] w-[300px] h-[45px] outline-none p-[5px] m-[5px]">
                     <label htmlFor="plan" className="text-gray-400">
                       Plan:
                     </label>
@@ -110,16 +140,17 @@ const EditCustomer = () => {
                       <option value="2ps">2 p/s</option>
                       <option value="3ps">3 p/s</option>
                     </select>
-
-                    <label
-                      htmlFor="routine"
-                      className="text-gray-400 mt-[24px] ml-[5px]"
-                    >
+                  </div>
+                  <div className="flex items-center border-transparent border-solid border-[1px] rounded-[8px] w-[300px] h-[45px] outline-none p-[5px] m-[5px]">
+                    <label htmlFor="routine" className="text-gray-400">
                       Rutina:
                     </label>
                     <select
                       name="routine"
                       id="routine"
+                      onChange={(e) =>
+                        setCustomer({ ...customer, routine: e.target.value })
+                      }
                       className="cursor-pointer outline-none"
                     >
                       <option value={customer.routine}>
@@ -132,6 +163,44 @@ const EditCustomer = () => {
                       <option value="5">5</option>
                     </select>
                   </div>
+                </div>
+                <div className="flex">
+                  <div className="border-transparent border-solid border-[1px] rounded-[8px] w-[300px] h-[90px] outline-none p-[5px] m-[5px]">
+                    <label htmlFor="startDate">Fecha de inicio:</label>
+                    <DatePicker
+                      id="startDate"
+                      name="startDate"
+                      dateFormat="yyyy/MM/dd"
+                      selected={startDate}
+                      onChange={(date) => setStartDate(date)}
+                      className="bg-[#fbfbfb] border-[#e5e7eb] border-solid border-[1px] rounded-[8px] w-[300px] h-[45px] outline-none p-[5px] cursor-pointer"
+                    />
+                  </div>
+                  <div className="border-transparent border-solid border-[1px] rounded-[8px] w-[300px] h-[90px] outline-none p-[5px] m-[5px]">
+                    <label htmlFor="endDate">Fecha de finalización:</label>
+                    <DatePicker
+                      id="endDate"
+                      name="endDate"
+                      dateFormat="yyyy/MM/dd"
+                      selected={endDate}
+                      onChange={(date) => setEndDate(date)}
+                      className="bg-[#fbfbfb] border-[#e5e7eb] border-solid border-[1px] rounded-[8px] w-[300px] h-[45px] outline-none p-[5px] cursor-pointer"
+                    />
+                  </div>
+                </div>
+                <div className="flex">
+                  <input
+                    type="text"
+                    id="payment"
+                    name="payment"
+                    placeholder="Ingrese el monto abonado"
+                    value={customer.payment}
+                    onChange={(e) =>
+                      setCustomer({ ...customer, payment: e.target.value })
+                    }
+                    required
+                    className="bg-[#fbfbfb] border-[#e5e7eb] border-solid border-[1px] rounded-[8px] w-[615px] h-[45px] outline-none p-[5px] m-[5px]"
+                  />
                 </div>
                 <div className="flex justify-center mt-8">
                   <Button
@@ -149,12 +218,12 @@ const EditCustomer = () => {
                 onSubmit={handleSubmit}
                 className="w-[650px] h-[50px] flex justify-center items-end mt-[10px]"
               >
-              <Button
-                    type="submit"
-                    color="red"
-                    text="Borrar"
-                    borderRadius="10px"
-                  />
+                <Button
+                  type="submit"
+                  color="red"
+                  text="Borrar"
+                  borderRadius="10px"
+                />
               </form>
             </div>
           </div>

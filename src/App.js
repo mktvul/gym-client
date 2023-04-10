@@ -59,7 +59,7 @@ const App = () => {
                 <Route path={"/editar-cliente/:id"} element={<EditCustomer />} />
               </Routes>
             </div>
-            <Footer />
+            {/* <Footer /> */}
           </div>
         </div>
       </BrowserRouter>
