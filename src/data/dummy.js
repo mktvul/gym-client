@@ -126,7 +126,7 @@ export const customersGrid = [
     field: 'startDate',
     headerText: 'Inicio',
     width: '130',
-    format: 'C2',
+    format: 'yMd',
     textAlign: 'left',
   },
   {

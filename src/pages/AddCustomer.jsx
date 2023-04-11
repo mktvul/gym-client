@@ -129,7 +129,7 @@ const AddCustomer = () => {
                     <DatePicker
                       id="startDate"
                       name="startDate"
-                      dateFormat="yyyy/MM/dd"
+                      dateFormat="yyyy-MM-dd"
                       selected={startDate}
                       onChange={(date) => setStartDate(date)}
                       className="bg-[#fbfbfb] border-[#e5e7eb] border-solid border-[1px] rounded-[8px] w-[300px] h-[45px] outline-none p-[5px] cursor-pointer"
@@ -140,7 +140,7 @@ const AddCustomer = () => {
                     <DatePicker
                       id="endDate"
                       name="endDate"
-                      dateFormat="yyyy/MM/dd"
+                      dateFormat="yyyy-MM-dd"
                       selected={endDate}
                       onChange={(date) => setEndDate(date)}
                       className="bg-[#fbfbfb] border-[#e5e7eb] border-solid border-[1px] rounded-[8px] w-[300px] h-[45px] outline-none p-[5px] cursor-pointer"

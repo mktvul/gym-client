@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import parseISO from 'date-fns/parseISO';
+import parseISO from "date-fns/parseISO";
 import DatePicker from "react-datepicker";
 
 import { Button } from "../components";
@@ -156,16 +156,17 @@ const EditCustomer = () => {
                     </select>
                   </div>
                 </div>
+                {console.log(customer.startDate)}
                 <div className="flex">
                   <div className="border-transparent border-solid border-[1px] rounded-[8px] w-[300px] h-[90px] outline-none p-[5px] m-[5px]">
                     <label htmlFor="startDate">Fecha de inicio:</label>
                     <DatePicker
                       id="startDate"
                       name="startDate"
-                      dateFormat="yyyy/MM/dd"
-                      selected={parseISO(customer.startDate)}
+                      dateFormat="yyyy-MM-dd"
+                      value={customer.startDate}
                       onChange={(e) =>
-                        setCustomer({ ...customer, startDate: e })
+                        setCustomer({ ...customer, startDate: e.toISOString().split('T')[0] })
                       }
                       className="bg-[#fbfbfb] border-[#e5e7eb] border-solid border-[1px] rounded-[8px] w-[300px] h-[45px] outline-none p-[5px] cursor-pointer"
                     />
@@ -175,9 +176,9 @@ const EditCustomer = () => {
                     <DatePicker
                       id="endDate"
                       name="endDate"
-                      dateFormat="yyyy/MM/dd"
-                      selected={parseISO(customer.endDate)}
-                      onChange={(e) => setCustomer({ ...customer, endDate: e })}
+                      dateFormat="yyyy-MM-dd"
+                      value={customer.endDate}
+                      onChange={(e) => setCustomer({ ...customer, endDate: e.toISOString().split('T')[0] })}
                       className="bg-[#fbfbfb] border-[#e5e7eb] border-solid border-[1px] rounded-[8px] w-[300px] h-[45px] outline-none p-[5px] cursor-pointer"
                     />
                   </div>
