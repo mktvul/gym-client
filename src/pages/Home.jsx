@@ -75,10 +75,10 @@ const Home = () => {
           <div className="flex justify-between items-center">
             <div className={formSubmit ? "hidden" : "block"}>
               <div className="font-semibold text-xl w-full">
-                ¡Bienvenido a Impacto Gym!
+                ¡Le damos la bienvenida!
               </div>
-              <div className="font-bold text-gray-400 mt-[24px]">
-                Ingrese su DNI
+              <div className="font-bold text-gray-400 mt-[24px] mb-[8px]">
+                Por favor, ingrese DNI
               </div>
               <form method="get" onSubmit={handleSubmit}>
                 <input
