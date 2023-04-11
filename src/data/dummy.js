@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import {
   FiShoppingBag,
-} from "react-icons/fi";
+} from 'react-icons/fi';
 
-import { RiContactsLine } from "react-icons/ri";
-import { useNavigate } from "react-router-dom";
+import { RiContactsLine } from 'react-icons/ri';
+import { useNavigate } from 'react-router-dom';
 
 export const gridOrderImage = (props) => (
   <div>
@@ -28,7 +28,7 @@ export const gridOrderStatus = (props) => (
 
 const customerGridImage = (props) => (
   <div className="image flex gap-4">
-    {/* <img className="rounded-full w-10 h-10" src={props.image} alt="employee" /> */}
+    {/* <img className='rounded-full w-10 h-10' src={props.image} alt='employee' /> */}
     <div>
       <p>{props.name}</p>
       <p>{props.email}</p>
@@ -39,17 +39,17 @@ const customerGridImage = (props) => (
 const customerGridStatus = (props) => {
   const [status, setStatus] = useState();
 
-  const currentDate = new Date().toISOString().split("T")[0];
+  const currentDate = new Date().toISOString().split('T')[0];
   const endDate = props.endDate;
-  const fiveDaysLater = new Date(new Date().getTime() + (5 * 24 * 60 * 60 * 1000)).toISOString().split("T")[0];
+  const fiveDaysLater = new Date(new Date().getTime() + (5 * 24 * 60 * 60 * 1000)).toISOString().split('T')[0];
 
   useEffect(() => {
     if (currentDate > endDate) {
-      setStatus("vencido");
+      setStatus('vencido');
     } else if (fiveDaysLater > endDate) {
-      setStatus("vence pronto")
+      setStatus('vence pronto');
     } else {
-      setStatus("activo");
+      setStatus('activo');
     }
   }, []);
 
@@ -58,13 +58,13 @@ const customerGridStatus = (props) => {
       <p
         style={{
           background:
-            status === "activo"
-              ? "#8BE78B"
-              : status === "vence pronto"
-              ? "#FEC90F"
-              : status === "vencido"
-              ? "#C61A09"
-              : "",
+            status === 'activo'
+              ? '#8BE78B'
+              : status === 'vence pronto'
+              ? '#FEC90F'
+              : status === 'vencido'
+              ? '#C61A09'
+              : '',
         }}
         className="rounded-full h-3 w-3"
       />
@@ -96,89 +96,89 @@ const customerButtonProfile = (props) => {
 
 export const customersGrid = [
   {
-    headerText: "Nombre",
-    width: "160",
+    headerText: 'Nombre',
+    width: '160',
     template: customerGridImage,
-    textAlign: "left",
+    textAlign: 'left',
   },
 
-  { field: "dni", headerText: "DNI", width: "110", textAlign: "left" },
+  { field: 'dni', headerText: 'DNI', width: '110', textAlign: 'left' },
 
   {
-    headerText: "Status",
-    width: "140",
+    headerText: 'Status',
+    width: '140',
     template: customerGridStatus,
-    textAlign: "Center",
+    textAlign: 'Center',
   },
 
-  { field: "plan", headerText: "Plan", width: "80", textAlign: "left" },
+  { field: 'plan', headerText: 'Plan', width: '80', textAlign: 'left' },
 
   {
-    field: "payment",
-    headerText: "Pago",
-    width: "100",
-    textAlign: "right",
+    field: 'payment',
+    headerText: 'Pago',
+    width: '100',
+    textAlign: 'right',
     template: customerGridPayment,
     // isPrimaryKey: true,
   },
 
   {
-    field: "startDate",
-    headerText: "Inicio",
-    width: "130",
-    format: "C2",
-    textAlign: "left",
+    field: 'startDate',
+    headerText: 'Inicio',
+    width: '130',
+    format: 'C2',
+    textAlign: 'left',
   },
   {
-    field: "endDate",
-    headerText: "Vencimiento",
-    width: "130",
-    format: "yMd",
-    textAlign: "left",
+    field: 'endDate',
+    headerText: 'Vencimiento',
+    width: '130',
+    format: 'yMd',
+    textAlign: 'left',
   },
-  { field: "routine", headerText: "Rutina", width: "100", textAlign: "center" },
+  { field: 'routine', headerText: 'Rutina', width: '100', textAlign: 'center' },
   {
-    field: "profile",
-    headerText: "Perfil",
-    width: "100",
-    textAlign: "Center",
+    field: 'profile',
+    headerText: 'Perfil',
+    width: '100',
+    textAlign: 'Center',
     template: customerButtonProfile,
   },
 ];
 
 export const links = [
   {
-    title: "Dashboard",
+    title: 'Dashboard',
     links: [
       {
-        name: "home",
+        name: 'home',
         icon: <FiShoppingBag />,
       },
     ],
   },
 
   {
-    title: "Secciones",
+    title: 'Secciones',
     links: [
       {
-        name: "agregar-cliente",
+        name: 'agregar-cliente',
         icon: <RiContactsLine />,
       },
       {
-        name: "editar-cliente",
+        name: 'editar-cliente',
         icon: <RiContactsLine />,
       },
       {
-        name: "clientes",
+        name: 'clientes',
         icon: <RiContactsLine />,
       },
     ],
   },
   // {
-  //   title: "Statistics",
+  //   title: 'Statistics',
   //   links: [
   //     {
-  //       name: "pie",
+  //       name: 'pie',
   //       icon: <FiPieChart />,
   //     },
   //   ],
