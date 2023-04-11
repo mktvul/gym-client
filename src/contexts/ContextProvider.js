@@ -30,11 +30,8 @@ export const ContextProvider = ({ children }) => {
   const handleClick = (clicked) => setIsClicked({ ...initialState, [clicked]: true });
 
   const getResults = async () => {
-
-    const response = await fetch("https://gym-proficient-server-production.up.railway.app/users/listAll");
-
+    const response = await fetch('https://gym-proficient-server-production.up.railway.app/users/listAll');
     const data = await response.json();
-
     setResults(data);
   };
 
