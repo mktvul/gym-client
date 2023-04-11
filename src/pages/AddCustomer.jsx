@@ -7,18 +7,10 @@ import { Button } from "../components";
 import { useStateContext } from "../contexts/ContextProvider";
 
 const AddCustomer = () => {
-  const { getResults, currentColor, currentMode } = useStateContext();
+  const { getResults, currentColor } = useStateContext();
   const [formSubmit, setFormSubmit] = useState(false);
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
-
-  // const date = () => {
-  //   let day = date.getDate();
-  //   let month = date.getMonth() + 1;
-  //   let year = date.getFullYear();
-
-  //   return `${year}-${month}-${day}`;
-  // };
 
   useEffect(() => {
     getResults();

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 import DatePicker from "react-datepicker";
-import parseISO from "date-fns/parseISO";
 
 import { Button } from "../components";
 import { useStateContext } from "../contexts/ContextProvider";
@@ -10,21 +9,13 @@ import { useStateContext } from "../contexts/ContextProvider";
 const EditCustomer = () => {
   const [customer, setCustomer] = useState({});
   const [formSubmit, setFormSubmit] = useState(false);
-  const [postData, setPostData] = useState({
-    name: "",
-    email: "",
-    dni: "",
-    plan: "",
-    routine: "",
-  });
+
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
 
   const params = useParams();
 
-  const navigate = useNavigate();
-
-  const { fetchData, currentColor, getResults, results } = useStateContext();
+  const { currentColor, getResults, results } = useStateContext();
 
   useEffect(() => {
     getResults();

@@ -7,10 +7,8 @@ import { Header } from '../components';
 
 const Customers = () => {
   const selectionsettings = { persistSelection: true };
-  const toolbarOptions = ['Delete'];
-  const editing = { allowDeleting: true, allowEditing: true };
   
-  const { getResults, results, currentColor, currentMode } = useStateContext();
+  const { getResults, results } = useStateContext();
 
   useEffect(() => {
     getResults();
@@ -25,8 +23,6 @@ const Customers = () => {
         allowPaging
         pageSettings={{ pageCount: 5 }}
         selectionSettings={selectionsettings}
-        // toolbar={toolbarOptions}
-        // editSettings={editing}
         allowSorting
       >
         <ColumnsDirective>

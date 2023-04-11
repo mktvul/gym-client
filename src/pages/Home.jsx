@@ -4,7 +4,7 @@ import { Button } from "../components";
 import { useStateContext } from "../contexts/ContextProvider";
 
 const Home = () => {
-  const { results, getResults, currentColor, currentMode } = useStateContext();
+  const { results, getResults, currentColor } = useStateContext();
   const [text, setText] = useState("");
   const [customer, setCustomer] = useState(null);
   const [formSubmit, setFormSubmit] = useState(false);
