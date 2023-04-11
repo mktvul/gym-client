@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { GridComponent, ColumnsDirective, ColumnDirective, Page, Selection, Inject, Edit, Toolbar, Sort, Filter } from '@syncfusion/ej2-react-grids';
 import { useStateContext } from "../contexts/ContextProvider";
 
-import { customersData, customersGrid } from '../data/dummy';
+import { customersGrid } from '../data/dummy';
 import { Header } from '../components';
 
 const Customers = () => {
@@ -26,7 +26,6 @@ const Customers = () => {
         allowSorting
       >
         <ColumnsDirective>
-          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
           {customersGrid.map((item, index) => <ColumnDirective key={index} {...item} />)}
         </ColumnsDirective>
         <Inject services={[Page, Selection, Toolbar, Edit, Sort, Filter]} />
