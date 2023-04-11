@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
+import parseISO from 'date-fns/parseISO';
 import DatePicker from "react-datepicker";
 
 import { Button } from "../components";
