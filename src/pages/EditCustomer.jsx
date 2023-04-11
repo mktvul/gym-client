@@ -162,7 +162,7 @@ const EditCustomer = () => {
                       id="startDate"
                       name="startDate"
                       dateFormat="yyyy/MM/dd"
-                      selected={customer.startDate}
+                      selected={parseISO(customer.startDate)}
                       onChange={(e) =>
                         setCustomer({ ...customer, startDate: e })
                       }
@@ -175,10 +175,8 @@ const EditCustomer = () => {
                       id="endDate"
                       name="endDate"
                       dateFormat="yyyy/MM/dd"
-                      selected={customer.endDate}
-                      onChange={(e) =>
-                        setCustomer({ ...customer, endDate: e })
-                      }
+                      selected={parseISO(customer.endDate)}
+                      onChange={(e) => setCustomer({ ...customer, endDate: e })}
                       className="bg-[#fbfbfb] border-[#e5e7eb] border-solid border-[1px] rounded-[8px] w-[300px] h-[45px] outline-none p-[5px] cursor-pointer"
                     />
                   </div>
