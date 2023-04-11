@@ -107,8 +107,8 @@ const EditCustomer = () => {
                       className="cursor-pointer outline-none"
                     >
                       <option value={customer.gender}>{customer.gender}</option>
-                      <option value="2ps">Femenino</option>
-                      <option value="3ps">Masculino</option>
+                      <option value="Femenino">Femenino</option>
+                      <option value="Masculino">Masculino</option>
                     </select>
                   </div>
                 </div>
