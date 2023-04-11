@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import DatePicker from 'react-datepicker';
+import React, { useEffect, useState } from "react";
+import DatePicker from "react-datepicker";
 
-import 'react-datepicker/dist/react-datepicker.css';
+import "react-datepicker/dist/react-datepicker.css";
 
-import { Button } from '../components';
-import { useStateContext } from '../contexts/ContextProvider';
+import { Button } from "../components";
+import { useStateContext } from "../contexts/ContextProvider";
 
 const AddCustomer = () => {
   const { getResults, currentColor } = useStateContext();
@@ -28,14 +28,14 @@ const AddCustomer = () => {
             <div
               className={
                 formSubmit
-                  ? 'w-[650px] h-[265px] flex justify-center items-center'
-                  : 'hidden'
+                  ? "w-[650px] h-[265px] flex justify-center items-center"
+                  : "hidden"
               }
             >
               Usuario agregado con éxito
             </div>
 
-            <div className={formSubmit ? 'hidden' : 'block'}>
+            <div className={formSubmit ? "hidden" : "block"}>
               <div className="font-semibold text-xl w-full mb-[10px]">
                 Agregar cliente
               </div>
@@ -74,12 +74,12 @@ const AddCustomer = () => {
                     className="bg-[#fbfbfb] border-[#e5e7eb] border-solid border-[1px] rounded-[8px] w-[300px] h-[45px] outline-none p-[5px] m-[5px]"
                   />
                   <div className="flex items-center border-transparent border-solid border-[1px] rounded-[8px] w-[300px] h-[45px] outline-none p-[5px] m-[5px]">
-                    <label htmlFor='genre' className='text-gray-400'>
+                    <label htmlFor="gender" className="text-gray-400">
                       Género:
                     </label>
                     <select
-                      name="genre"
-                      id="genre"
+                      name="gender"
+                      id="gender"
                       className="cursor-pointer outline-none"
                     >
                       <option value="">- Seleccionar -</option>
@@ -90,7 +90,7 @@ const AddCustomer = () => {
                 </div>
                 <div className="flex">
                   <div className="flex items-center border-transparent border-solid border-[1px] rounded-[8px] w-[300px] h-[45px] outline-none p-[5px] m-[5px]">
-                    <label htmlFor='plan' className="text-gray-400">
+                    <label htmlFor="plan" className="text-gray-400">
                       Plan:
                     </label>
                     <select
@@ -106,7 +106,7 @@ const AddCustomer = () => {
                     </select>
                   </div>
                   <div className="flex items-center border-transparent border-solid border-[1px] rounded-[8px] w-[300px] h-[45px] outline-none p-[5px] m-[5px]">
-                    <label htmlFor='routine' className="text-gray-400">
+                    <label htmlFor="routine" className="text-gray-400">
                       Rutina:
                     </label>
                     <select
@@ -125,7 +125,7 @@ const AddCustomer = () => {
                 </div>
                 <div className="flex">
                   <div className="border-transparent border-solid border-[1px] rounded-[8px] w-[300px] h-[90px] outline-none p-[5px] m-[5px]">
-                    <label htmlFor='startDate'>Fecha de inicio:</label>
+                    <label htmlFor="startDate">Fecha de inicio:</label>
                     <DatePicker
                       id="startDate"
                       name="startDate"
@@ -136,7 +136,7 @@ const AddCustomer = () => {
                     />
                   </div>
                   <div className="border-transparent border-solid border-[1px] rounded-[8px] w-[300px] h-[90px] outline-none p-[5px] m-[5px]">
-                    <label htmlFor='endDate'>Fecha de finalización:</label>
+                    <label htmlFor="endDate">Fecha de finalización:</label>
                     <DatePicker
                       id="endDate"
                       name="endDate"
