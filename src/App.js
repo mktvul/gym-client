@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { Footer, Sidebar, ThemeSettings } from "./components";
+import { Footer, Sidebar } from "./components";
 import { Home, Customers, AddCustomer, EditCustomer } from "./pages";
 import "./App.css";
 
@@ -13,7 +13,6 @@ const App = () => {
     setCurrentMode,
     currentMode,
     activeMenu,
-    themeSettings,
   } = useStateContext();
 
   useEffect(() => {
@@ -46,8 +45,6 @@ const App = () => {
             }
           >
             <div>
-              {themeSettings && <ThemeSettings />}
-
               <Routes>
                 {/* dashboard  */}
                 <Route path="/" element={<Home />} />
