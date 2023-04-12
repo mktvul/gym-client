@@ -78,7 +78,7 @@ const Home = () => {
   const RemoveAClass = () => (
     <form
       name="remove"
-      action={`https://gym-proficient-server-production.up.railway.app/users/update/${customer?.id}`}
+      action={`https://gym-proficient-server-production.up.railway.app/users/home/${customer?.id}`}
       method="post"
       className="hidden"
     >
