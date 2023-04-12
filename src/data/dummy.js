@@ -103,21 +103,21 @@ export const customersGrid = [
     textAlign: 'left',
   },
 
-  { field: 'dni', headerText: 'DNI', width: '110', textAlign: 'left' },
+  { field: 'dni', headerText: 'DNI', width: '100', textAlign: 'left' },
 
   {
     headerText: 'Status',
-    width: '140',
+    width: '135',
     template: customerGridStatus,
     textAlign: 'Center',
   },
 
-  { field: 'classes', headerText: 'Clases', width: '100', textAlign: 'left' },
+  { field: 'classes', headerText: 'Clases', width: '90', textAlign: 'left' },
 
   {
     field: 'payment',
     headerText: 'Pago',
-    width: '100',
+    width: '80',
     textAlign: 'right',
     template: customerGridPayment,
     // isPrimaryKey: true,
@@ -126,22 +126,22 @@ export const customersGrid = [
   {
     field: 'startDate',
     headerText: 'Inicio',
-    width: '130',
+    width: '100',
     format: 'yMd',
     textAlign: 'left',
   },
   {
     field: 'endDate',
     headerText: 'Vencimiento',
-    width: '130',
+    width: '105',
     format: 'yMd',
     textAlign: 'left',
   },
-  { field: 'plan', headerText: 'Plan', width: '100', textAlign: 'center' },
+  { field: 'plan', headerText: 'Plan', width: '70', textAlign: 'center' },
   {
     field: 'profile',
     headerText: 'Perfil',
-    width: '100',
+    width: '75',
     textAlign: 'Center',
     template: customerButtonProfile,
   },
