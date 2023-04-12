@@ -114,6 +114,18 @@ const EditCustomer = () => {
                   </div>
                 </div>
                 <div className="flex">
+                  <input
+                    type="text"
+                    id="classes"
+                    name="classes"
+                    placeholder="Clases"
+                    value={customer.classes}
+                    onChange={(e) =>
+                      setCustomer({ ...customer, classes: e.target.value })
+                    }
+                    required
+                    className="bg-[#fbfbfb] border-[#e5e7eb] border-solid border-[1px] rounded-[8px] w-[300px] h-[45px] outline-none p-[5px] m-[5px]"
+                  />
                   <div className="flex items-center border-transparent border-solid border-[1px] rounded-[8px] w-[300px] h-[45px] outline-none p-[5px] m-[5px]">
                     <label htmlFor="plan" className="text-gray-400">
                       Plan:
@@ -127,36 +139,24 @@ const EditCustomer = () => {
                       className="cursor-pointer outline-none"
                     >
                       <option value={customer.plan}>{customer.plan}</option>
-                      <option value="Anual">Anual</option>
-                      <option value="Libre">Libre</option>
-                      <option value="2ps">2 p/s</option>
-                      <option value="3ps">3 p/s</option>
-                    </select>
-                  </div>
-                  <div className="flex items-center border-transparent border-solid border-[1px] rounded-[8px] w-[300px] h-[45px] outline-none p-[5px] m-[5px]">
-                    <label htmlFor="routine" className="text-gray-400">
-                      Rutina:
-                    </label>
-                    <select
-                      name="routine"
-                      id="routine"
-                      onChange={(e) =>
-                        setCustomer({ ...customer, routine: e.target.value })
-                      }
-                      className="cursor-pointer outline-none"
-                    >
-                      <option value={customer.routine}>
-                        {customer.routine}
-                      </option>
                       <option value="1">1</option>
                       <option value="2">2</option>
                       <option value="3">3</option>
                       <option value="4">4</option>
                       <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                      <option value="13">13</option>
+                      <option value="14">14</option>
+                      <option value="15">15</option>
                     </select>
                   </div>
                 </div>
-                {console.log(customer.startDate)}
                 <div className="flex">
                   <div className="border-transparent border-solid border-[1px] rounded-[8px] w-[300px] h-[90px] outline-none p-[5px] m-[5px]">
                     <label htmlFor="startDate">Fecha de inicio:</label>
@@ -166,7 +166,10 @@ const EditCustomer = () => {
                       dateFormat="yyyy-MM-dd"
                       value={customer.startDate}
                       onChange={(e) =>
-                        setCustomer({ ...customer, startDate: e.toISOString().split('T')[0] })
+                        setCustomer({
+                          ...customer,
+                          startDate: e.toISOString().split("T")[0],
+                        })
                       }
                       className="bg-[#fbfbfb] border-[#e5e7eb] border-solid border-[1px] rounded-[8px] w-[300px] h-[45px] outline-none p-[5px] cursor-pointer"
                     />
@@ -178,7 +181,12 @@ const EditCustomer = () => {
                       name="endDate"
                       dateFormat="yyyy-MM-dd"
                       value={customer.endDate}
-                      onChange={(e) => setCustomer({ ...customer, endDate: e.toISOString().split('T')[0] })}
+                      onChange={(e) =>
+                        setCustomer({
+                          ...customer,
+                          endDate: e.toISOString().split("T")[0],
+                        })
+                      }
                       className="bg-[#fbfbfb] border-[#e5e7eb] border-solid border-[1px] rounded-[8px] w-[300px] h-[45px] outline-none p-[5px] cursor-pointer"
                     />
                   </div>

@@ -21,6 +21,7 @@ const Home = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    document.remove.submit();
 
     if (customer !== null) {
       setFormSubmit(true);
@@ -49,24 +50,48 @@ const Home = () => {
     }, []);
 
     return (
-      <span className="flex gap-2 justify-center items-center text-gray-700 capitalize">
-        <p
-          style={{
-            background:
-              status === "activo"
-                ? "#8BE78B"
-                : status === "vence pronto"
-                ? "#FEC90F"
-                : status === "vencido"
-                ? "#C61A09"
-                : "",
-          }}
-          className="rounded-full h-3 w-3"
-        />
-        {status}
-      </span>
+      <div className="text-[18px] flex flex-col w-[230px] h-[130px] shadow-lg p-[15px]">
+        <span className="font-bold">Status:</span>
+        <span className="flex gap-2 h-[75px] justify-center items-center justify-center text-gray-700 capitalize">
+          <span
+            style={{
+              background:
+                status === "activo"
+                  ? "#8BE78B"
+                  : status === "vence pronto"
+                  ? "#FEC90F"
+                  : status === "vencido"
+                  ? "#C61A09"
+                  : "",
+            }}
+            className="rounded-full w-[30px] h-[30px]"
+          />
+          {status}
+        </span>
+      </div>
     );
   };
+  console.log(customer);
+  const RemoveAClass = () => (
+    <form
+      name="remove"
+      action={`https://gym-proficient-server-production.up.railway.app/users/update/${customer?.id}`}
+      method="post"
+      className="hidden"
+    >
+      <input
+        type="text"
+        id="classes"
+        name="classes"
+        value={customer?.classes - 1}
+        required
+      />
+      <Button
+        color="white"
+        text="Confirmar"
+      />
+    </form>
+  );
 
   return (
     <div className="mt-24">
@@ -99,38 +124,42 @@ const Home = () => {
             </div>
             <div className={formSubmit ? "block" : "hidden"}>
               <div className="flex justify-center mb-[10px]">
-                <div className="text-[20px] font-bold">{customer?.name}</div>
+                <div className="text-[30px] font-bold">{customer?.name}</div>
               </div>
-              <div>
+              <div className="text-[18px] mb-[13px]">
                 <span className="font-bold">Email:</span> {customer?.email}
               </div>
-              <div>
+              <div className="text-[18px] mb-[13px]">
                 <span className="font-bold">DNI:</span> {customer?.dni}
               </div>
-              <div className="flex">
-                <span className="font-bold mr-[5px]">Status:</span> <HandleStatus />
-              </div>
-              <div>
+              <div className="text-[18px] mb-[13px]">
                 <span className="font-bold">Plan:</span> {customer?.plan}
               </div>
-              <div>
+              <div className="text-[18px] mb-[13px]">
                 <span className="font-bold">Pago:</span> ${customer?.payment}
               </div>
-              <div>
-                <span className="font-bold">Rutina:</span> {customer?.routine}
-              </div>
-              <div>
+              <div className="text-[18px] mb-[13px]">
                 <span className="font-bold">Fecha de inicio:</span>{" "}
                 {customer?.startDate}
               </div>
-              <div>
+              <div className="text-[18px] mb-[13px]">
                 <span className="font-bold">Fecha de finalización:</span>{" "}
                 {customer?.endDate}
+              </div>
+              <div className="flex flex-row w-[550px] justify-between">
+                <HandleStatus />
+                <div className="text-[18px] flex flex-col w-[230px] h-[130px] shadow-md p-[15px]">
+                  <span className="font-bold">Clases:</span>
+                  <span className="text-[50px] flex gap-2 items-center justify-center text-gray-700 capitalize">
+                    {customer?.classes}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <RemoveAClass />
     </div>
   );
 };

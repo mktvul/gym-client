@@ -111,7 +111,7 @@ export const customersGrid = [
     textAlign: 'Center',
   },
 
-  { field: 'plan', headerText: 'Plan', width: '80', textAlign: 'left' },
+  { field: 'classes', headerText: 'Clases', width: '100', textAlign: 'left' },
 
   {
     field: 'payment',
@@ -136,7 +136,7 @@ export const customersGrid = [
     format: 'yMd',
     textAlign: 'left',
   },
-  { field: 'routine', headerText: 'Rutina', width: '100', textAlign: 'center' },
+  { field: 'plan', headerText: 'Plan', width: '100', textAlign: 'center' },
   {
     field: 'profile',
     headerText: 'Perfil',

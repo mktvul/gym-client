@@ -89,6 +89,14 @@ const AddCustomer = () => {
                   </div>
                 </div>
                 <div className="flex">
+                <input
+                    type="text"
+                    id="classes"
+                    name="classes"
+                    placeholder="Clases"
+                    required
+                    className="bg-[#fbfbfb] border-[#e5e7eb] border-solid border-[1px] rounded-[8px] w-[300px] h-[45px] outline-none p-[5px] m-[5px]"
+                  />
                   <div className="flex items-center border-transparent border-solid border-[1px] rounded-[8px] w-[300px] h-[45px] outline-none p-[5px] m-[5px]">
                     <label htmlFor="plan" className="text-gray-400">
                       Plan:
@@ -99,27 +107,21 @@ const AddCustomer = () => {
                       className="cursor-pointer outline-none"
                     >
                       <option value="">- Seleccionar -</option>
-                      <option value="Anual">Anual</option>
-                      <option value="Libre">Libre</option>
-                      <option value="2ps">2 p/s</option>
-                      <option value="3ps">3 p/s</option>
-                    </select>
-                  </div>
-                  <div className="flex items-center border-transparent border-solid border-[1px] rounded-[8px] w-[300px] h-[45px] outline-none p-[5px] m-[5px]">
-                    <label htmlFor="routine" className="text-gray-400">
-                      Rutina:
-                    </label>
-                    <select
-                      name="routine"
-                      id="routine"
-                      className="cursor-pointer outline-none"
-                    >
-                      <option value="">- Seleccionar -</option>
                       <option value="1">1</option>
                       <option value="2">2</option>
                       <option value="3">3</option>
                       <option value="4">4</option>
                       <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                      <option value="13">13</option>
+                      <option value="14">14</option>
+                      <option value="15">15</option>
                     </select>
                   </div>
                 </div>
