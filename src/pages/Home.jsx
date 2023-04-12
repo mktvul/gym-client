@@ -43,9 +43,9 @@ const Home = () => {
       .split("T")[0];
 
     useEffect(() => {
-      if (currentDate > endDate || customer.classes <= 0 ) {
+      if (currentDate > endDate || customer?.classes <= 0 ) {
         setStatus("vencido");
-      } else if (fiveDaysLater > endDate || customer.classes <= 5 ) {
+      } else if (fiveDaysLater > endDate || customer?.classes <= 5 ) {
         setStatus("vence pronto");
       } else {
         setStatus("activo");
