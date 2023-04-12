@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 import { Button } from "../components";
 import { useStateContext } from "../contexts/ContextProvider";
@@ -9,6 +10,8 @@ const Home = () => {
   const [customer, setCustomer] = useState(null);
   const [formSubmit, setFormSubmit] = useState(false);
 
+  const params = useParams();
+  console.log(params)
   useEffect(() => {
     getResults();
   }, []);
@@ -40,9 +43,9 @@ const Home = () => {
       .split("T")[0];
 
     useEffect(() => {
-      if (currentDate > endDate) {
+      if (currentDate > endDate || customer.classes <= 0 ) {
         setStatus("vencido");
-      } else if (fiveDaysLater > endDate) {
+      } else if (fiveDaysLater > endDate || customer.classes <= 5 ) {
         setStatus("vence pronto");
       } else {
         setStatus("activo");
@@ -71,7 +74,7 @@ const Home = () => {
       </div>
     );
   };
-  console.log(customer);
+
   const RemoveAClass = () => (
     <form
       name="remove"
