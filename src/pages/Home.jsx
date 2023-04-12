@@ -11,7 +11,7 @@ const Home = () => {
   const [formSubmit, setFormSubmit] = useState(false);
 
   const params = useParams();
-  console.log(params)
+  console.log("params", params)
   useEffect(() => {
     getResults();
   }, []);

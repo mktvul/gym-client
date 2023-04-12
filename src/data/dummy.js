@@ -44,12 +44,12 @@ const customerGridStatus = (props) => {
   const fiveDaysLater = new Date(new Date().getTime() + (5 * 24 * 60 * 60 * 1000)).toISOString().split('T')[0];
 
   useEffect(() => {
-    if (currentDate > endDate) {
-      setStatus('vencido');
-    } else if (fiveDaysLater > endDate) {
-      setStatus('vence pronto');
+    if (currentDate > endDate || customer?.classes <= 0 ) {
+      setStatus("vencido");
+    } else if (fiveDaysLater > endDate || customer?.classes <= 5 ) {
+      setStatus("vence pronto");
     } else {
-      setStatus('activo');
+      setStatus("activo");
     }
   }, []);
 
