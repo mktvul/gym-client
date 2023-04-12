@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 
 import { Button } from "../components";
 import { useStateContext } from "../contexts/ContextProvider";
@@ -10,8 +9,6 @@ const Home = () => {
   const [customer, setCustomer] = useState(null);
   const [formSubmit, setFormSubmit] = useState(false);
 
-  const params = useParams();
-  console.log("params", params)
   useEffect(() => {
     getResults();
   }, []);
