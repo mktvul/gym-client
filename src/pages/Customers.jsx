@@ -21,7 +21,7 @@ const Customers = () => {
         dataSource={results.resultado}
         enableHover={false}
         allowPaging
-        pageSettings={{ pageCount: 5 }}
+        pageSettings={{ pageSize: 50, pageCount: 5 }}
         selectionSettings={selectionsettings}
         allowSorting
       >

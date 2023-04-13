@@ -40,9 +40,9 @@ const Home = () => {
       .split("T")[0];
 
     useEffect(() => {
-      if (currentDate > endDate || customer?.classes <= 0 ) {
+      if (currentDate > endDate || customer?.classes <= 0) {
         setStatus("vencido");
-      } else if (fiveDaysLater > endDate || customer?.classes <= 5 ) {
+      } else if (fiveDaysLater > endDate || customer?.classes <= 5) {
         setStatus("vence pronto");
       } else {
         setStatus("activo");
@@ -86,10 +86,7 @@ const Home = () => {
         value={customer?.classes - 1}
         required
       />
-      <Button
-        color="white"
-        text="Confirmar"
-      />
+      <Button color="white" text="Confirmar" />
     </form>
   );
 
@@ -109,6 +106,7 @@ const Home = () => {
                 <input
                   value={text}
                   type="text"
+                  autoFocus
                   onChange={(e) => setText(e.target.value)}
                   className="bg-[#fbfbfb] border-[#e5e7eb] border-solid border-[1px] rounded-[8px] w-[300px] h-[45px] outline-none p-[5px]"
                 />
